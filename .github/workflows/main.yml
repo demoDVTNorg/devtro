@@ -11,11 +11,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Extract Issue Number and Body
-        if: ${{ contains(github.event.issue.labels.*.name, 'pager-duty') && contains(github.event.issue.labels.*.name, 'bug') }}
-        run: |
-          echo "Issue Number: ${{ github.event.issue.number }}"
-          echo "Issue Body: ${{ github.event.issue.body }}"
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -24,13 +19,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install requests
-
           
-      - name: Running the issue script
-        run: |
-          python3 test07.py
-         
     
+         
+      - name: Runnig the script if pageduty template is used
+        if: ${{ contains(github.event.issue.labels.*.name, 'pager-duty') && contains(github.event.issue.labels.*.name, 'bug') }}
+        run: |
+           python3 test07.py
         
     -
         
