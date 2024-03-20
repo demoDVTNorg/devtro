@@ -1,0 +1,36 @@
+name: Issue Created
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  extract_issue_number_and_body:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Extract Issue Number and Body
+        if: ${{ contains(github.event.issue.labels.*.name, 'pager-duty') && contains(github.event.issue.labels.*.name, 'bug') }}
+        run: |
+          echo "Issue Number: ${{ github.event.issue.number }}"
+          echo "Issue Body: ${{ github.event.issue.body }}"
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+        python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+          
+      - name: Running the issue script
+        run: |
+          python3 test07.py
+         
+    
+        
+    -
+        
