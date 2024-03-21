@@ -30,7 +30,6 @@ def process_issue_body(issue_body, pagerduty_score_threshold):
         except ValueError:
             user_unblocked_reason = 0
 
-    print("Issue Body:", issue_body)
     print("Affected areas:", affected_areas)
     print("Additional affected areas:", additional_affected_areas)
     print("Prod/Non-prod environments?:", prod_non_prod)
