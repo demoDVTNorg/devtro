@@ -1,7 +1,8 @@
 import re
 import requests
 import subprocess
-import json
+import os
+import sys
 
 def process_issue_body(body, pagerduty_score_threshold):
     affected_areas_pattern = r'###\s*Affected\s*areas\s*.*?\((.*?)\)'
@@ -29,7 +30,16 @@ def process_issue_body(body, pagerduty_score_threshold):
     print("Is User unblocked?:", user_unblocked)
     print("How was the user un-blocked?:", user_unblocked_reason)
     print("\n")
-     
+    
+    if any(value == 0 for value in [affected_areas, prod_non_prod, user_unblocked]):
+        print("One or more required values are missing. Exiting...")
+        sys.exit(0)
+    
+
+    if user_unblocked_reason == 0:
+        user_unblocked_reason=1
+    print("user_unblocked_reason")
+    
     
     if user_unblocked_reason == 3:
             try:
