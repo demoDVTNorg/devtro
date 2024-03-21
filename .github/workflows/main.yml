@@ -1,5 +1,4 @@
 name: Issue Created
-
 on:
   issues:
     types: [opened]
@@ -15,8 +14,3 @@ jobs:
         if: contains(github.event.issue.body, 'pager-duty template')
         run: |
           echo "Issue was created using pager-duty template"
-          # You can add your further steps or actions here
-
-        
-    -
-        
