@@ -4,7 +4,7 @@ on:
     types: [opened]
 
 jobs:
-  extract_issue_number_and_body:
+  extract-issue-body:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
