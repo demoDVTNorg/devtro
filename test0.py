@@ -20,7 +20,7 @@ def process_issue_body(issue_body, pagerduty_score_threshold):
     additional_affected_areas = int(additional_affected_areas_match.group(1).strip()) if additional_affected_areas_match else 0
     prod_non_prod = int(prod_non_prod_match.group(1).strip()) if prod_non_prod_match else 0
     user_unblocked = int(user_unblocked_match.group(1).strip()) if user_unblocked_match else 0
-    user_unblocked_reason = int(user_unblocked_reason_match.group(1).strip()) if user_unblocked_reason_match else "0"
+    user_unblocked_reason = user_unblocked_reason_match.group(1).strip() if user_unblocked_reason_match else "0"
 
     try:
         user_unblocked_reason = int(user_unblocked_reason)
