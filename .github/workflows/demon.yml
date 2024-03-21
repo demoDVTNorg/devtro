@@ -25,6 +25,7 @@ jobs:
           echo "Issue was created using pager-duty template"
           echo "$ISSUE_NUMBER"
           echo "$ISSUE_BODY"
+          python3 finalsgithubautomation.py
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_BODY: ${{ github.event.issue.body }}
