@@ -18,6 +18,7 @@ jobs:
       - name: Check if pager-duty template is used
         if: ${{ contains(github.event.issue.labels.*.name, 'pager-duty') && contains(github.event.issue.labels.*.name, 'bug') }}
         run: |
+          ls
           echo "Issue was created using pager-duty template"
           python github_pagerduty_issue_score_calculation.py
         env:
