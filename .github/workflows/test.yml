@@ -23,33 +23,6 @@ jobs:
       - name: Check if pager-duty template is used
         if: ${{ contains(github.event.issue.labels.*.name, 'pager-duty') && contains(github.event.issue.labels.*.name, 'bug') }}
         run: |
-          echo "Issue was created using pager-duty template"
-          name: Issue Created
-on:
-  issues:
-    types: [opened]
-
-jobs:
-  extract-issue-body:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x' 
-
-      - name: Install dependencies
-        run: |
-          pip install requests
-          pip install re
-
-      - name: Check if pager-duty template is used
-        if: contains(github.event.issue.body, 'pager-duty template')
-        run: |
-          echo "Issue was created using pager-duty template"
           echo "$ISSUE_NUMBER"
           echo "$ISSUE_BODY"
         env:
