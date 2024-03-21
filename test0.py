@@ -40,7 +40,7 @@ def process_issue_body(issue_body, pagerduty_score_threshold):
         print("One or more required values are missing. Exiting...")
         sys.exit(0)
 
-    if user_unblocked_reason == 0:
+    if user_unblocked_reason == 0 or affected_areas == 100::
         user_unblocked_reason = 1
 
     if user_unblocked_reason == 3:
