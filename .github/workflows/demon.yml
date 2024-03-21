@@ -18,7 +18,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install requests
-          pip install re
 
       - name: Check if pager-duty template is used
         if: ${{ contains(github.event.issue.labels.*.name, 'pager-duty') && contains(github.event.issue.labels.*.name, 'bug') }}
