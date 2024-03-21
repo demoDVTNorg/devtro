@@ -24,6 +24,8 @@ jobs:
         if: contains(github.event.issue.body, 'pager-duty template')
         run: |
           echo "Issue was created using pager-duty template"
+          echo "$ISSUE_NUMBER"
+          echo "$ISSUE_BODY"
           python3 test07.py
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
