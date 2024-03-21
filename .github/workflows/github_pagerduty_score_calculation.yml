@@ -20,7 +20,7 @@ jobs:
         run: |
           ls
           echo "Issue was created using pager-duty template"
-          python github_pagerduty_issue_score_calculation.py
+          python finalautomation.py
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_BODY: ${{ github.event.issue.body }}
