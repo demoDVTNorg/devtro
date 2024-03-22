@@ -20,9 +20,9 @@ jobs:
         run: |
           ls
           echo "Issue was created using pager-duty template"
-          python finalautomation.py
+          python3 .github/finalautomation.py
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_BODY: ${{ github.event.issue.body }}
           MY_ACCESS_TOKEN: ${{ secrets.MY_ACCESS_TOKEN}}
-          PAGERDUTY_SCORE_THRESHOLD: ${{secrets.PAGERDUTY_SCORE_THRESHOLD}}
+          PAGERDUTY_SCORE_THRESHOLD: ${{vars.PAGERDUTY_SCORE_THRESHOLD}}
