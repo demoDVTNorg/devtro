@@ -120,7 +120,7 @@ pagerduty_score_threshold = os.environ.get('PAGERDUTY_SCORE_THRESHOLD')
 
 final_score = process_issue_body(issue_body, pagerduty_score_threshold)
 
-if final_score <= int(pagerduty_score_threshold):
+if final_score <=pagerduty_score_threshold:
     try:
         result = subprocess.run(['gh', 'issue', 'edit', str(issue_number), '--remove-label', 'pager-duty'])
         print("pager-duty label removed from issue", issue_number)
