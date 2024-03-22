@@ -54,7 +54,7 @@ user_unblocked_reason = {
     "None": 1
 }
 
-def process_issue_body(issue_body, pagerduty_score_threshold):
+def process_issue_body(issue_body):
     affected_areas_pattern = r'###\s*Affected\s*areas\s*\n\n(.*?)\n\n###'
     additional_affected_areas_pattern = r'###\s*Additional\s*affected\s*areas\s*\n\n(.*?)\n\n###'
     prod_non_prod_pattern = r'###\s*Prod/Non-prod\s*environments\?\s*\n\n(.*?)\n\n###'
@@ -118,7 +118,7 @@ issue_body = os.environ.get('ISSUE_BODY')
 issue_number = os.environ.get('ISSUE_NUMBER')
 pagerduty_score_threshold = os.environ.get('PAGERDUTY_SCORE_THRESHOLD')
 
-final_score = process_issue_body(issue_body, pagerduty_score_threshold)
+final_score = process_issue_body(issue_body)
 
 if final_score <= int(pagerduty_score_threshold):
     try:
