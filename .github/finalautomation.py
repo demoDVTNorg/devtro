@@ -51,7 +51,7 @@ user_unblocked_reason = {
     "TEMPORARILY - By doing some changes from the backend/DB": 1,
     "PERMANENTLY - By giving a workaround (From outside Devtron)": 2,
     "PERMANENTLY - By giving a workaround (Within Devtron)": 1,
-    "None": 1
+    "None": 0
 }
 
 def process_issue_body(issue_body, pagerduty_score_threshold):
@@ -77,7 +77,7 @@ def process_issue_body(issue_body, pagerduty_score_threshold):
     additional_affected_areas_score = additional_affected_areas.get(additional_affected_area_value, 0)
     prod_non_prod_score = prod_environment.get(prod_non_prod_value, 0)
     user_unblocked_score = user_unblocked.get(user_unblocked_value, 0)
-    user_unblocked_reason_score = user_unblocked_reason.get(user_unblocked_reason_value, 1)
+    user_unblocked_reason_score = user_unblocked_reason.get(user_unblocked_reason_value, 0)
 
     print("Affected areas:", affected_area_value)
     print("Additional affected areas:", additional_affected_area_value)
