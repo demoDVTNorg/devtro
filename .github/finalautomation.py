@@ -100,7 +100,7 @@ def process_issue_body(issue_body):
     print("How was the user un-blocked?:", user_unblocked_reason_value)
 
     # Checking for required values and skipping execution of script and adding pager-duty issue validation failed, if not found
-    if affected_areas_score == 0 or prod_non_prod_score == 0 or user_unblocked_score == 0:
+    if affected_areas_score == 0 and prod_non_prod_score == 0 and user_unblocked_score == 0:
         print("One or more required values are missing. Pager-duty validation failed ...")
         try:
             token = os.environ.get('GITHUB_TOKEN')
