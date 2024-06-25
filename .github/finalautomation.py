@@ -102,15 +102,14 @@ def process_issue_body(issue_body):
     # Checking for required values and skipping execution of script and adding pager-duty issue validation failed, if not found
     if affected_areas_score == 0 or prod_non_prod_score == 0 or user_unblocked_score == 0:
         print("One or more required values are missing. Pager-duty validation failed ...")
-          try:
-              subprocess.run(['gh', 'issue', 'edit', str(issue_number), '--remove-label', 'pager-duty'])
-               print("Removing pager-duty label", issue_number)
-              subprocess.run(['gh', 'issue', 'edit', str(issue_number), '--add-label', 'pager-duty validation failed'], capture_output=True, check=True, text=True)
-              print("Pager-duty vlaidation failed label added to issue", issue_number)
-              sys.exit(0)
-          except subprocess.CalledProcessError as e:
-          print(e) 
-
+        try:
+            subprocess.run(['gh', 'issue', 'edit', str(issue_number), '--remove-label', 'pager-duty'])
+            print("Removing pager-duty label", issue_number)
+            subprocess.run(['gh', 'issue', 'edit', str(issue_number), '--add-label', 'pager-duty validation failed'], capture_output=True, check=True, text=True)
+            print("Pager-duty vlaidation failed label added to issue", issue_number)
+            sys.exit(0)
+        except subprocess.CalledProcessError as e:
+            print(e) 
     if user_unblocked_reason_score == 0:
         user_unblocked_reason_score = 1
 
