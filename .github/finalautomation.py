@@ -103,6 +103,8 @@ def process_issue_body(issue_body):
     if affected_areas_score == 0 and prod_non_prod_score == 0 and user_unblocked_score == 0:
         print("One or more required values are missing. Pager-duty validation failed ...")
         try:
+            token = os.environ.get('GITHUB_TOKEN')
+            subprocess.run(['gh', 'auth', 'login', '--with-token'], input=token, text=True, capture_output=True)
             subprocess.run(['gh', 'issue', 'edit', str(issue_number), '--remove-label', 'pager-duty'])
             print("Removing pager-duty label", issue_number)
             subprocess.run(['gh', 'issue', 'edit', str(issue_number), '--add-label', 'pager-duty validation failed'], capture_output=True, check=True, text=True)
