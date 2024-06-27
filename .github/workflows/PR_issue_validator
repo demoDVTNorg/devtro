@@ -43,16 +43,6 @@ jobs:
           export forked=true
         fi
         echo "forked: $forked"
-        if [[ "$TITLE" == *"doc:"* || "$TITLE" == *"docs:"* || "$TITLE" == *"misc:"* || "$TITLE" == *"release:"* || "$TITLE" == *"Release:"*  ]]; then
-          echo "Skipping validation as this is a PR for documentation or misc."
-          if [[ $forked == true ]]; then
-            echo "PR:Ready-to-Review, exiting gracefully"
-            exit 0
-          fi
-          gh pr edit $PRNUM --remove-label "PR:Issue-verification-failed"
-          gh pr edit $PRNUM --add-label "PR:Ready-to-Review"
-          exit 0
-        fi
         
         ### For ex: Fixes #2123
         pattern1="((Fixes|Resolves):? #[0-9]+)"
