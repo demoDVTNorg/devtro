@@ -139,7 +139,8 @@ final_score = process_issue_body(issue_body)
 # Removing 'pager-duty' label from issue if final score is below the threshold
 if final_score <= int(pagerduty_score_threshold):
     try:
-        result = subprocess.run(['gh', 'issue', 'edit', str(issue_number), '--remove-label', 'pager-duty'])
+        result = subprocess.run(['gh', 'issue', 'edit', str(issue_number), '--remove-label', 'pager-duty validation failed'])
+        subprocess.run(['gh', 'issue', 'edit', str(issue_number), '--remove-label', 'pager-duty'])
         print("pager-duty label removed from issue", issue_number)
     except subprocess.CalledProcessError as e:
         print(e)
